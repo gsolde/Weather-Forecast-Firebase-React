@@ -7,11 +7,10 @@ function App() {
   const dispatch = useDispatch();
   const availableCities = useSelector(selectCities);
 
-  console.log(availableCities);
-
   useEffect(() => {
     !availableCities && dispatch(fetchCities());
   });
+
   return (
     <div className="App">
       <header className="App-header">
