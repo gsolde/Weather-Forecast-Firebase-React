@@ -19,8 +19,10 @@ export const appSlice = createSlice({
       })
       .addCase(fetchCities.fulfilled, (state, action) => {
         state.status = "success";
-        state.citiesList = action.payload;
-        console.log("Cities fetched!");
+        state.citiesList = action.payload.reduce((res, city) => {
+          res = [...res, { label: city.NOMBRE, codProv: city.CODPROV, id: city.ID_REL }];
+          return res.sort((a, b) => (a.label > b.label ? 1 : -1));
+        }, []);
       })
       .addCase(fetchCities.rejected, (state) => {
         state.status = "failed";
