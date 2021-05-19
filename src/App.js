@@ -14,9 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <SearchBar />
-      </header>
+      <SearchBar />
     </div>
   );
 }

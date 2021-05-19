@@ -20,7 +20,7 @@ export const appSlice = createSlice({
       .addCase(fetchCities.fulfilled, (state, action) => {
         state.status = "success";
         state.citiesList = action.payload.reduce((res, city) => {
-          res = [...res, { label: city.NOMBRE, codProv: city.CODPROV, id: city.ID_REL }];
+          res = [...res, { label: city.NOMBRE, cod_prov: city.CODPROV, id: city.ID_REL.slice(1, -1) }];
           return res.sort((a, b) => (a.label > b.label ? 1 : -1));
         }, []);
       })
