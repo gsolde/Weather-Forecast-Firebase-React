@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCities } from "../../appSlice";
+import { selectCities } from "../../containers/home/homeSlice";
 import { fetchWeatherReports, selectWeatherReports, resetWeatherReports } from "./searchBarSlice";
 import { EuiComboBox, EuiFlexItem, EuiButton, EuiFlexGroup } from "@elastic/eui";
 import "@elastic/eui/dist/eui_theme_amsterdam_light.css";

@@ -9,7 +9,7 @@ export const fetchCities = createAsyncThunk("availableCities/fetchCities", async
   return cities;
 });
 
-export const appSlice = createSlice({
+export const homeSlice = createSlice({
   name: "availableCities",
   initialState,
   extraReducers: (builder) => {
@@ -31,4 +31,4 @@ export const appSlice = createSlice({
 });
 
 export const selectCities = (state) => state.availableCities.citiesList;
-export default appSlice.reducer;
+export default homeSlice.reducer;

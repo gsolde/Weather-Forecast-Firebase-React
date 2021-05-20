@@ -7,11 +7,11 @@ function NavBar() {
     <EuiFlexGroup gutterSize="m" justifyContent="center" responsive={false}>
       <EuiFlexItem grow={false}>
         <EuiButton color="text" onClick={() => {}}>
-          Login
+          Log in
         </EuiButton>
       </EuiFlexItem>
       <EuiFlexItem grow={false}>
-        <EuiButton onClick={() => {}}>Sign in</EuiButton>
+        <EuiButton onClick={() => {}}>Sign up</EuiButton>
       </EuiFlexItem>
       <EuiFlexItem grow={false}>
         <EuiButton color="danger" onClick={() => {}}>

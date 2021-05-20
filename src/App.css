@@ -5,29 +5,3 @@
   align-items: center;
   background-color: #17202a;
 }
-
-.navBarContainer {
-  position: absolute;
-  top: 2vh;
-  width: 100%;
-  display: flex;
-}
-
-.navBarInstructions {
-  color: #848c9c;
-  position: relative;
-  top: -4.5vh;
-}
-
-.searchBarContainer {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 7vh;
-}
-
-.weatherTilesContainer {
-  position: absolute;
-  width: 70%;
-  top: 30vh;
-}
