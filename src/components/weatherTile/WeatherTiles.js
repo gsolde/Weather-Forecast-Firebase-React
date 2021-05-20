@@ -16,7 +16,7 @@ function WeatherTiles() {
         </EuiButton>
       </EuiFlexItem>
       <EuiFlexItem grow={false}>
-        <EuiButton size="s" color="secondary" iconType="heart" isDisabled>
+        <EuiButton size="s" color="primary" iconType="heart">
           Add to favorites
         </EuiButton>
       </EuiFlexItem>
@@ -33,7 +33,7 @@ function WeatherTiles() {
             description={
               <>
                 <div>Temperature - {`${report.temperatura_actual} ºC`}</div>
-                <div>Rain forecast - {`${report.lluvia}`}</div>
+                <div>Rain forecast - {`${report.lluvia} %`}</div>
               </>
             }
             footer={cardFooterContent}
