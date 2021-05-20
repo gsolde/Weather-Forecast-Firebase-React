@@ -23,13 +23,13 @@ function SearchBar() {
   return (
     <div className={"searchBarContainer"}>
       <EuiComboBox
-        placeholder="Search City"
+        placeholder="Search Cities"
         options={availableCities}
         selectedOptions={selectedOptions}
         onChange={onChange}
       />
       <button className={"button"} onClick={() => handleClick(selectedOptions)}>
-        Get forecast
+        Get forecasts
       </button>
     </div>
   );
