@@ -1,18 +1,18 @@
 import React from "react";
-
+import { useHistory } from "react-router-dom";
 import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 
 function NavBar() {
+  const history = useHistory();
+
   return (
     <EuiFlexGroup gutterSize="m" justifyContent="center" responsive={false}>
       <EuiFlexItem grow={false}>
-        <EuiButton color="text" onClick={() => {}}>
+        <EuiButton color="ghost" onClick={() => history.push("/login")}>
           Log in
         </EuiButton>
       </EuiFlexItem>
-      <EuiFlexItem grow={false}>
-        <EuiButton onClick={() => {}}>Sign up</EuiButton>
-      </EuiFlexItem>
+
       <EuiFlexItem grow={false}>
         <EuiButton color="danger" onClick={() => {}}>
           Log out

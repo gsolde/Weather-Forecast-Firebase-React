@@ -1,0 +1,20 @@
+.loginFormContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.accountText {
+  color: #848c9c;
+}
+
+.hasAccountSetter {
+  color: #f1c40f;
+}
+
+.hasAccountSetter:hover {
+  cursor: pointer;
+}
