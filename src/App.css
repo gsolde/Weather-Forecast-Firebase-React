@@ -13,7 +13,15 @@
   display: flex;
 }
 
+.navBarInstructions {
+  color: #848c9c;
+  position: relative;
+  top: -4.5vh;
+}
+
 .searchBarContainer {
+  display: flex;
+  justify-content: center;
   position: absolute;
   top: 7vh;
 }

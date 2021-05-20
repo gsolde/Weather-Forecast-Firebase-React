@@ -20,6 +20,7 @@ function App() {
         <NavBar />
       </div>
       <div className={"searchBarContainer"}>
+        <p className={"navBarInstructions"}>Select any number of cities & get the weather forecast!</p>
         <SearchBar />
       </div>
       <div className={"weatherTilesContainer"}>

@@ -33,7 +33,7 @@ function WeatherTiles() {
             description={
               <>
                 <div>Temperature - {`${report.temperatura_actual} ºC`}</div>
-                <div>Rain forecast - {`${report.lluvia} %`}</div>
+                <div>Rain probability - {`${report.lluvia} %`}</div>
               </>
             }
             footer={cardFooterContent}
