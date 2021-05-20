@@ -32,12 +32,12 @@ function SearchBar() {
           onChange={onChange}
         />
         <EuiFlexItem grow={false}>
-          <EuiButton color="secondary" onClick={() => handleClick(selectedOptions)}>
+          <EuiButton fill color="secondary" onClick={() => handleClick(selectedOptions)}>
             Get forecasts
           </EuiButton>
         </EuiFlexItem>
         {selectedWeatherReports.length ? (
-          <EuiButton color="text" onClick={() => dispatch(resetWeatherReports())}>
+          <EuiButton fill color="warning" onClick={() => dispatch(resetWeatherReports())}>
             Clear all
           </EuiButton>
         ) : null}

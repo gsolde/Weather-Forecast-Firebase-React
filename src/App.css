@@ -3,14 +3,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #17202a;
+}
+
+.navBarContainer {
+  position: absolute;
+  top: 2vh;
+  width: 100%;
+  display: flex;
 }
 
 .searchBarContainer {
   position: absolute;
-  top: 5vh;
+  top: 7vh;
 }
 
 .weatherTilesContainer {
-  margin-top: 25vh;
+  position: absolute;
   width: 70%;
+  top: 30vh;
 }

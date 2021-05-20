@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCities, selectCities } from "./appSlice";
 import SearchBar from "./components/searchBar/SearchBar";
 import WeatherTiles from "./components/weatherTile/WeatherTiles";
+import NavBar from "./components/navBar/NavBar";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
 
   return (
     <div className={"App"}>
+      <div className={"navBarContainer"}>
+        <NavBar />
+      </div>
       <div className={"searchBarContainer"}>
         <SearchBar />
       </div>
