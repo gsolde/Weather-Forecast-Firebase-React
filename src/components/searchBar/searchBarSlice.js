@@ -13,6 +13,9 @@ export const fetchWeatherReports = createAsyncThunk("weatherReports/fetchWeather
 export const searchBarSlice = createSlice({
   name: "weatherReports",
   initialState,
+  reducers: {
+    resetWeatherReports: (state) => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchWeatherReports.pending, (state) => {
@@ -33,4 +36,6 @@ export const searchBarSlice = createSlice({
 });
 
 export const selectWeatherReports = (state) => state.selectedCitiesWeather.weatherReports;
+export const { resetWeatherReports } = searchBarSlice.actions;
+
 export default searchBarSlice.reducer;

@@ -7,10 +7,18 @@ import { EuiButton, EuiCard, EuiFlexGrid, EuiFlexGroup, EuiFlexItem } from "@ela
 
 function WeatherTiles() {
   const weatherReports = useSelector(selectWeatherReports);
+
   const cardFooterContent = (
-    <EuiFlexGroup justifyContent="flexEnd">
+    <EuiFlexGroup justifyContent="center">
       <EuiFlexItem grow={false}>
-        <EuiButton>Save to favourites</EuiButton>
+        <EuiButton size="s" color="danger">
+          Delete
+        </EuiButton>
+      </EuiFlexItem>
+      <EuiFlexItem grow={false}>
+        <EuiButton size="s" color="secondary" iconType="heart" isDisabled>
+          Add to favorites
+        </EuiButton>
       </EuiFlexItem>
     </EuiFlexGroup>
   );
@@ -22,7 +30,12 @@ function WeatherTiles() {
           <EuiCard
             textAlign="left"
             title={report.municipio.NOMBRE}
-            description={`${report.temperatura_actual} ºC`}
+            description={
+              <>
+                <div>Temperature - {`${report.temperatura_actual} ºC`}</div>
+                <div>Rain forecast - {`${report.lluvia}`}</div>
+              </>
+            }
             footer={cardFooterContent}
           />
         </EuiFlexItem>
