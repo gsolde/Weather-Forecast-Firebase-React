@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCities, selectCities } from "./appSlice";
-import "./App.css";
 import SearchBar from "./components/searchBar/SearchBar";
+import WeatherTiles from "./components/weatherTile/WeatherTiles";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,8 +14,13 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <SearchBar />
+    <div className={"App"}>
+      <div className={"searchBarContainer"}>
+        <SearchBar />
+      </div>
+      <div className={"weatherTilesContainer"}>
+        <WeatherTiles />
+      </div>
     </div>
   );
 }
