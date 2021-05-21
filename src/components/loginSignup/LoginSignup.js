@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { EuiFieldPassword, EuiFieldText, EuiButton, EuiForm, EuiFormRow, EuiSpacer } from "@elastic/eui";
-import { auth } from "../../config/firebase";
+import { firebaseApp, auth } from "../../config/firebase";
 import { setUser } from "./loginSignupSlice";
 import "./LoginSignup.css";
 
@@ -46,6 +46,7 @@ function Login() {
 
   useEffect(() => {
     authState();
+    console.log(firebaseApp.database());
   }, []);
 
   return (

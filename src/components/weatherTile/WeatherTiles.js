@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { selectUser } from "../loginSignup/loginSignupSlice";
 import { selectWeatherReports } from "../searchBar/searchBarSlice";
 import "@elastic/eui/dist/eui_theme_amsterdam_light.css";
 
@@ -7,6 +8,7 @@ import { EuiButton, EuiCard, EuiFlexGrid, EuiFlexGroup, EuiFlexItem } from "@ela
 
 function WeatherTiles() {
   const weatherReports = useSelector(selectWeatherReports);
+  const user = useSelector(selectUser);
 
   const cardFooterContent = (
     <EuiFlexGroup justifyContent="center">
@@ -16,7 +18,7 @@ function WeatherTiles() {
         </EuiButton>
       </EuiFlexItem>
       <EuiFlexItem grow={false}>
-        <EuiButton size="s" color="primary" iconType="heart">
+        <EuiButton size="s" color="primary" iconType="heart" disabled={user ? false : true}>
           Add to favorites
         </EuiButton>
       </EuiFlexItem>
