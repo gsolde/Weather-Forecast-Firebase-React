@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { EuiFieldPassword, EuiFieldText, EuiButton, EuiForm, EuiFormRow, EuiSpacer } from "@elastic/eui";
 import { auth } from "../../config/firebase";
-import { setUser } from "./loginSignupSlice";
+import { fetchUserFavoriteCities, setUser, setUserFavoriteCities } from "./loginSignupSlice";
 import "./LoginSignup.css";
 
 function Login() {
@@ -14,6 +14,14 @@ function Login() {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const onChangeEmail = (e) => {
+    setEmail(e);
+  };
+
+  const onChangePassword = (e) => {
+    setPassword(e);
+  };
 
   function handleSignUp() {
     auth.createUserWithEmailAndPassword(email, password);
@@ -29,20 +37,13 @@ function Login() {
     auth.onAuthStateChanged(function (user) {
       if (user) {
         dispatch(setUser(user));
+        dispatch(fetchUserFavoriteCities(user));
         history.push("/");
       } else {
         dispatch(setUser(user));
       }
     });
   }
-
-  const onChangeEmail = (e) => {
-    setEmail(e);
-  };
-
-  const onChangePassword = (e) => {
-    setPassword(e);
-  };
 
   useEffect(() => {
     authState();
