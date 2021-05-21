@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { auth } from "../../config/firebase";
 import { firebaseApp } from "../../config/firebase";
 
-const initialState = { user: auth.currentUser };
+const initialState = { userDetails: auth.currentUser };
 
 export const fetchUserFavoriteCities = createAsyncThunk("userData/fetchUserFavoriteCities", async (user) => {
   let res = firebaseApp
@@ -11,7 +11,7 @@ export const fetchUserFavoriteCities = createAsyncThunk("userData/fetchUserFavor
     .child(user.uid)
     .once("value")
     .then((snapshot) => {
-      return snapshot.val();
+      return Object.values(snapshot.val());
     });
   const data = await res;
   return data;
@@ -22,7 +22,7 @@ export const loginSignupSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload;
+      state.userDetails = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -41,7 +41,7 @@ export const loginSignupSlice = createSlice({
 });
 
 export const { setUser, setUserFavoriteCities } = loginSignupSlice.actions;
-export const selectUser = (state) => state.authentication.user;
-export const selectUserFavoriteCities = (state) => state.authentication.userFavoriteCities;
+export const selectUser = (state) => state.userData.userDetails;
+export const selectUserFavoriteCities = (state) => state.userData.userFavoriteCities;
 
 export default loginSignupSlice.reducer;

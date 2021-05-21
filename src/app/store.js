@@ -5,9 +5,9 @@ import searchBarReducer from "../components/searchBar/searchBarSlice";
 
 export const store = configureStore({
   reducer: {
-    authentication: loginSignupReducer,
-    availableCities: homeReducer,
-    selectedCitiesWeather: searchBarReducer,
+    userData: loginSignupReducer,
+    cities: homeReducer,
+    weather: searchBarReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -35,7 +35,7 @@ export const searchBarSlice = createSlice({
   },
 });
 
-export const selectWeatherReports = (state) => state.selectedCitiesWeather.weatherReports;
+export const selectWeatherReports = (state) => state.weather.weatherReports;
 export const { resetWeatherReports } = searchBarSlice.actions;
 
 export default searchBarSlice.reducer;

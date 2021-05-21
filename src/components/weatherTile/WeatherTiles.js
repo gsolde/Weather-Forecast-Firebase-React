@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../loginSignup/loginSignupSlice";
+import { selectUser, selectUserFavoriteCities } from "../loginSignup/loginSignupSlice";
 import { selectWeatherReports } from "../searchBar/searchBarSlice";
 import { pushFavoriteCityToFirebase } from "../../helpers/helpers";
 import "@elastic/eui/dist/eui_theme_amsterdam_light.css";
@@ -10,6 +10,7 @@ import { EuiButton, EuiCard, EuiFlexGrid, EuiFlexGroup, EuiFlexItem } from "@ela
 function WeatherTiles() {
   const weatherReports = useSelector(selectWeatherReports);
   const user = useSelector(selectUser);
+  const userFavoriteCities = useSelector(selectUserFavoriteCities);
 
   function handleStoreFavorite(report, user) {
     pushFavoriteCityToFirebase(report, user);

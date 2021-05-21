@@ -30,5 +30,5 @@ export const homeSlice = createSlice({
   },
 });
 
-export const selectCities = (state) => state.availableCities.citiesList;
+export const selectCities = (state) => state.cities.citiesList;
 export default homeSlice.reducer;
