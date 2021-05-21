@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { auth } from "../../config/firebase";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { EuiFieldPassword, EuiFieldText, EuiButton, EuiForm, EuiFormRow, EuiSpacer } from "@elastic/eui";
+import { auth } from "../../config/firebase";
+import { setUser } from "./loginSignupSlice";
 import "./LoginSignup.css";
 
 function Login() {
@@ -9,6 +12,9 @@ function Login() {
   const [hasAccount, setHasAccount] = useState(true);
   const [dual, setDual] = useState(true);
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   function handleSignUp() {
     auth.createUserWithEmailAndPassword(email, password);
     //TODO handle errors!
@@ -16,16 +22,16 @@ function Login() {
 
   function handleLogin() {
     auth.signInWithEmailAndPassword(email, password);
-    console.log(auth.currentUser);
     //TODO handle errors!
   }
 
   function authState() {
     auth.onAuthStateChanged(function (user) {
       if (user) {
-        console.log(user);
+        dispatch(setUser(user));
+        history.push("/");
       } else {
-        console.log("no one is logged in!");
+        dispatch(setUser(user));
       }
     });
   }
@@ -66,7 +72,7 @@ function Login() {
       </p>
       <EuiSpacer />
       {hasAccount ? (
-        <EuiButton fill type="submit" color="primary" onClick={() => handleLogin}>
+        <EuiButton fill type="submit" color="primary" onClick={handleLogin}>
           Log in
         </EuiButton>
       ) : (
