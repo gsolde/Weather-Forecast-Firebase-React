@@ -9,4 +9,8 @@ export const store = configureStore({
     availableCities: homeReducer,
     selectedCitiesWeather: searchBarReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

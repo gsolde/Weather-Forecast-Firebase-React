@@ -64,12 +64,21 @@ function Login() {
         </EuiFormRow>
         <EuiSpacer />
       </EuiForm>
-      <p className={"accountText"}>
-        Don't have an account yet?{" "}
-        <span className={"hasAccountSetter"} onClick={() => setHasAccount(!hasAccount)}>
-          Sign up!
-        </span>
-      </p>
+      {hasAccount ? (
+        <p className={"accountText"}>
+          Don't have an account yet?{" "}
+          <span className={"hasAccountSetter"} onClick={() => setHasAccount(!hasAccount)}>
+            Sign up!
+          </span>
+        </p>
+      ) : (
+        <p className={"accountText"}>
+          If you have an account,{" "}
+          <span className={"hasAccountSetter"} onClick={() => setHasAccount(!hasAccount)}>
+            Log in!
+          </span>
+        </p>
+      )}
       <EuiSpacer />
       {hasAccount ? (
         <EuiButton fill type="submit" color="primary" onClick={handleLogin}>
