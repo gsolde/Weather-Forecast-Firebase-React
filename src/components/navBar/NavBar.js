@@ -1,4 +1,5 @@
 import React from "react";
+import { auth } from "../../config/firebase";
 import { useHistory } from "react-router-dom";
 import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 
@@ -14,7 +15,12 @@ function NavBar() {
       </EuiFlexItem>
 
       <EuiFlexItem grow={false}>
-        <EuiButton color="danger" onClick={() => {}}>
+        <EuiButton
+          color="danger"
+          onClick={() => {
+            auth.signOut();
+          }}
+        >
           Log out
         </EuiButton>
       </EuiFlexItem>
