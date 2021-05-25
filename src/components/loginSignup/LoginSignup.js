@@ -3,14 +3,13 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { EuiFieldPassword, EuiFieldText, EuiButton, EuiForm, EuiFormRow, EuiSpacer } from "@elastic/eui";
 import { auth } from "../../config/firebase";
-import { fetchUserFavoriteCities, setUser, setUserFavoriteCities } from "./loginSignupSlice";
+import { fetchUserFavoriteCities, setUser } from "./loginSignupSlice";
 import "./LoginSignup.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hasAccount, setHasAccount] = useState(true);
-  const [dual, setDual] = useState(true);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -58,7 +57,7 @@ function Login() {
         <EuiFormRow label="password">
           <EuiFieldPassword
             placeholder="Password"
-            type={dual ? "dual" : undefined}
+            type={"dual"}
             value={password}
             onChange={(e) => onChangePassword(e.target.value)}
           />

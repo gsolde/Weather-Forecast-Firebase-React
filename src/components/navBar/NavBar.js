@@ -3,6 +3,7 @@ import { auth } from "../../config/firebase";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, resetUserFavoriteCities } from "../loginSignup/loginSignupSlice";
+import { resetWeatherReports } from "../searchBar/searchBarSlice";
 import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 
 function NavBar() {
@@ -19,6 +20,7 @@ function NavBar() {
             onClick={() => {
               auth.signOut();
               dispatch(resetUserFavoriteCities());
+              dispatch(resetWeatherReports());
             }}
           >
             Log out
