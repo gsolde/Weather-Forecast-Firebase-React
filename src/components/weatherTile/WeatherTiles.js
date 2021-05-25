@@ -1,17 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { selectUser } from "../loginSignup/loginSignupSlice";
 import { selectWeatherReports } from "../searchBar/searchBarSlice";
-import { pushFavoriteCityToFirebase } from "../../helpers/helpers";
+import { addCityToFavorites } from "../loginSignup/loginSignupSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { pushFavoriteCityToFirebase, addFavoriteCityToStore } from "../../helpers/helpers";
 import { EuiButton, EuiCard, EuiFlexGrid, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 import "@elastic/eui/dist/eui_theme_amsterdam_light.css";
 
 function WeatherTiles() {
   const weatherReports = useSelector(selectWeatherReports);
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   function handleStoreFavorite(report, user) {
     pushFavoriteCityToFirebase(report, user);
+    dispatch(addCityToFavorites(addFavoriteCityToStore(report)));
   }
 
   return (

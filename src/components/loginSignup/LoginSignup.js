@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { EuiFieldPassword, EuiFieldText, EuiButton, EuiForm, EuiFormRow, EuiSpacer } from "@elastic/eui";
 import { auth } from "../../config/firebase";
 import { fetchUserFavoriteCities, setUser } from "./loginSignupSlice";
+import { resetWeatherReports } from "../searchBar/searchBarSlice";
 import "./LoginSignup.css";
 
 function Login() {
@@ -37,6 +38,7 @@ function Login() {
       if (user) {
         dispatch(setUser(user));
         dispatch(fetchUserFavoriteCities(user));
+        dispatch(resetWeatherReports(user));
         history.push("/");
       } else {
         dispatch(setUser(user));

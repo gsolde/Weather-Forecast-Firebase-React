@@ -11,3 +11,11 @@ export function pushFavoriteCityToFirebase(report, user) {
       id: report.municipio.CODIGOINE.slice(0, 5),
     });
 }
+
+export function addFavoriteCityToStore(report) {
+  return {
+    label: report.municipio.NOMBRE,
+    cod_prov: report.municipio.CODPROV,
+    id: report.municipio.CODIGOINE.slice(0, 5),
+  };
+}
