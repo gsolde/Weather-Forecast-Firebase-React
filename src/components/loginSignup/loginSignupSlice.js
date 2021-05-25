@@ -24,6 +24,7 @@ export const loginSignupSlice = createSlice({
     setUser: (state, action) => {
       state.userDetails = action.payload;
     },
+    resetUserFavoriteCities: (state) => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -40,7 +41,7 @@ export const loginSignupSlice = createSlice({
   },
 });
 
-export const { setUser, setUserFavoriteCities } = loginSignupSlice.actions;
+export const { setUser, setUserFavoriteCities, resetUserFavoriteCities } = loginSignupSlice.actions;
 export const selectUser = (state) => state.userData.userDetails;
 export const selectUserFavoriteCities = (state) => state.userData.userFavoriteCities;
 

@@ -1,13 +1,14 @@
 import React from "react";
 import { auth } from "../../config/firebase";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectUser } from "../loginSignup/loginSignupSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser, resetUserFavoriteCities } from "../loginSignup/loginSignupSlice";
 import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 
 function NavBar() {
   const history = useHistory();
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   return (
     <EuiFlexGroup gutterSize="m" justifyContent="center" responsive={false}>
@@ -17,6 +18,7 @@ function NavBar() {
             color="danger"
             onClick={() => {
               auth.signOut();
+              dispatch(resetUserFavoriteCities());
             }}
           >
             Log out
