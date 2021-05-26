@@ -2,13 +2,13 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectFavoriteCitiesSelected } from "../navBar/navBarSlice";
 import { deleteWeatherReport } from "../searchBar/searchBarSlice";
+import { selectUser, selectUserFavoriteCities, fetchUserFavoriteCities } from "../loginSignup/loginSignupSlice";
 import {
-  selectUser,
-  addCityToFavorites,
-  selectUserFavoriteCities,
-  deleteCityFromFavorites,
-} from "../loginSignup/loginSignupSlice";
-import { pushFavoriteCityToFirebase, getCityDetails } from "../../helpers/helpers";
+  pushFavoriteCityToFirebase,
+  getCityDetails,
+  getCityFirebaseID,
+  deleteFavoriteCityFromFirebase,
+} from "../../helpers/helpers";
 import { EuiButton, EuiCard, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 import "@elastic/eui/dist/eui_theme_amsterdam_light.css";
 
@@ -19,16 +19,16 @@ function WeatherTile(props) {
   const userFavoriteCities = useSelector(selectUserFavoriteCities);
   const areFavoriteCitiesSelected = useSelector(selectFavoriteCitiesSelected);
 
-  const isFavorite = userFavoriteCities.some((city) => city.label === props.report.municipio.NOMBRE);
+  const isFavorite = Object.values(userFavoriteCities).some((city) => city.label === props.report.municipio.NOMBRE);
 
   function handleStoreFavorite(report, user) {
     pushFavoriteCityToFirebase(report, user);
-    dispatch(addCityToFavorites(getCityDetails(report)));
+    dispatch(fetchUserFavoriteCities(user));
   }
 
-  function handleDeleteFavorite(report, user) {
-    dispatch(deleteCityFromFavorites(getCityDetails(report)));
+  function handleDeleteFavorite(userFavoriteCities, report, user) {
     dispatch(deleteWeatherReport(getCityDetails(report)));
+    deleteFavoriteCityFromFirebase(getCityFirebaseID(userFavoriteCities, report), user);
   }
 
   return (
@@ -51,7 +51,7 @@ function WeatherTile(props) {
                 disabled={user && isFavorite && areFavoriteCitiesSelected ? false : user && !isFavorite ? false : true}
                 onClick={() =>
                   isFavorite && areFavoriteCitiesSelected
-                    ? handleDeleteFavorite(props.report, user)
+                    ? handleDeleteFavorite(userFavoriteCities, props.report, user)
                     : handleStoreFavorite(props.report, user)
                 }
               >

@@ -11,7 +11,7 @@ export const fetchUserFavoriteCities = createAsyncThunk("userData/fetchUserFavor
     .child(user.uid)
     .once("value")
     .then((snapshot) => {
-      return Object.values(snapshot.val());
+      return snapshot.val();
     });
   const data = await res;
   return data;
@@ -27,9 +27,6 @@ export const loginSignupSlice = createSlice({
     resetUserFavoriteCities: (state) => initialState,
     addCityToFavorites: (state, action) => {
       state.userFavoriteCities = [...state.userFavoriteCities, action.payload];
-    },
-    deleteCityFromFavorites: (state, action) => {
-      state.userFavoriteCities = state.userFavoriteCities.filter((favCity) => favCity.label !== action.payload.label);
     },
   },
   extraReducers: (builder) => {
@@ -47,8 +44,7 @@ export const loginSignupSlice = createSlice({
   },
 });
 
-export const { setUser, setUserFavoriteCities, resetUserFavoriteCities, addCityToFavorites, deleteCityFromFavorites } =
-  loginSignupSlice.actions;
+export const { setUser, setUserFavoriteCities, resetUserFavoriteCities, addCityToFavorites } = loginSignupSlice.actions;
 export const selectUser = (state) => state.userData.userDetails;
 export const selectUserFavoriteCities = (state) => state.userData.userFavoriteCities;
 
