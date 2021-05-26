@@ -9,8 +9,13 @@ import {
   getCityFirebaseID,
   deleteFavoriteCityFromFirebase,
 } from "../../helpers/helpers";
+import cloud from "../../assets/cloud.svg";
+import rain from "../../assets/rain.svg";
+import rainCloud from "../../assets/rainCloud.svg";
+import sun from "../../assets/sun.svg";
 import { EuiButton, EuiCard, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 import "@elastic/eui/dist/eui_theme_amsterdam_light.css";
+import "./WeatherTile.css";
 
 function WeatherTile(props) {
   const dispatch = useDispatch();
@@ -38,6 +43,20 @@ function WeatherTile(props) {
         title={props.report.municipio.NOMBRE}
         description={
           <>
+            {Number(props.report.lluvia) === 0 ? <img className="weatherIcon" src={sun} /> : null}
+
+            {props.report.lluvia === "Ip" ? <img className="weatherIcon" src={cloud} /> : null}
+
+            {Number(props.report.lluvia) >= 0.1 && Number(props.report.lluvia) <= 0.2 ? (
+              <img className="weatherIcon" src={cloud} />
+            ) : null}
+
+            {Number(props.report.lluvia) >= 1 && Number(props.report.lluvia) < 2 ? (
+              <img className="weatherIcon" src={rainCloud} />
+            ) : null}
+
+            {Number(props.report.lluvia) >= 2 ? <img className="weatherIcon" src={rain} /> : null}
+
             <div>Temperature: {`${props.report.temperatura_actual} ºC`}</div>
             <div>Rain probability: {`${props.report.lluvia} mm`}</div>
           </>
