@@ -28,6 +28,9 @@ export const loginSignupSlice = createSlice({
     addCityToFavorites: (state, action) => {
       state.userFavoriteCities = [...state.userFavoriteCities, action.payload];
     },
+    deleteCityFromFavorites: (state, action) => {
+      state.userFavoriteCities = state.userFavoriteCities.filter((favCity) => favCity.label !== action.payload.label);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -44,7 +47,8 @@ export const loginSignupSlice = createSlice({
   },
 });
 
-export const { setUser, setUserFavoriteCities, resetUserFavoriteCities, addCityToFavorites } = loginSignupSlice.actions;
+export const { setUser, setUserFavoriteCities, resetUserFavoriteCities, addCityToFavorites, deleteCityFromFavorites } =
+  loginSignupSlice.actions;
 export const selectUser = (state) => state.userData.userDetails;
 export const selectUserFavoriteCities = (state) => state.userData.userFavoriteCities;
 

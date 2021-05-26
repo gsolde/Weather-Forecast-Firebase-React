@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCities, selectCities } from "./homeSlice";
 import { selectFavoriteCitiesSelected } from "../../components/navBar/navBarSlice";
 import SearchBar from "../../components/searchBar/SearchBar";
-import WeatherTiles from "../../components/weatherTile/WeatherTiles";
+import WeatherTilesGrid from "../../components/weatherTilesGrid/WeatherTilesGrid";
 import NavBar from "../../components/navBar/NavBar";
 import "./Home.css";
 
@@ -28,7 +28,7 @@ function Home() {
         </div>
       ) : null}
       <div className={"weatherTilesContainer"}>
-        <WeatherTiles />
+        <WeatherTilesGrid />
       </div>
     </div>
   );

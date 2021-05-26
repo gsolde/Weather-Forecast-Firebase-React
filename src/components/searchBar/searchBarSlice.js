@@ -15,6 +15,11 @@ export const searchBarSlice = createSlice({
   initialState,
   reducers: {
     resetWeatherReports: (state) => initialState,
+    deleteWeatherReport: (state, action) => {
+      state.weatherReports = state.weatherReports.filter(
+        (weatherReport) => weatherReport.municipio.NOMBRE !== action.payload.label
+      );
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -36,6 +41,6 @@ export const searchBarSlice = createSlice({
 });
 
 export const selectWeatherReports = (state) => state.weather.weatherReports;
-export const { resetWeatherReports, setFavoriteCitiesSelector } = searchBarSlice.actions;
+export const { resetWeatherReports, setFavoriteCitiesSelector, deleteWeatherReport } = searchBarSlice.actions;
 
 export default searchBarSlice.reducer;
