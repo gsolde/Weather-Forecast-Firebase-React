@@ -44,8 +44,10 @@ export const loginSignupSlice = createSlice({
   },
 });
 
-export const { setUser, setUserFavoriteCities, resetUserFavoriteCities, addCityToFavorites } = loginSignupSlice.actions;
-export const selectUser = (state) => state.userData.userDetails;
 export const selectUserFavoriteCities = (state) => state.userData.userFavoriteCities;
+export const selectFirebaseFavCitiesFetchStatus = (state) => state.userData.status;
+export const selectUser = (state) => state.userData.userDetails;
+
+export const { setUser, setUserFavoriteCities, resetUserFavoriteCities, addCityToFavorites } = loginSignupSlice.actions;
 
 export default loginSignupSlice.reducer;

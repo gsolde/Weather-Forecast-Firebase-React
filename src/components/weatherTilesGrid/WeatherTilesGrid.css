@@ -6,3 +6,12 @@
   top: 200px;
   opacity: 0.1;
 }
+
+.weatherAPIErrorMsg {
+  text-align: center;
+  color: #e74c3c;
+  font-size: 80px;
+  position: relative;
+  top: 200px;
+  opacity: 0.5;
+}

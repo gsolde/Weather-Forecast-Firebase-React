@@ -17,7 +17,7 @@ function SearchBar() {
     setSelected(selectedOptions);
   };
 
-  function handleClick(cities) {
+  function handleGetForecasts(cities) {
     cities && cities.forEach((city) => dispatch(fetchWeatherReports(city)));
     setSelected([]);
   }
@@ -32,7 +32,7 @@ function SearchBar() {
           onChange={onChange}
         />
         <EuiFlexItem grow={false}>
-          <EuiButton fill color="secondary" onClick={() => handleClick(selectedOptions)}>
+          <EuiButton fill color="secondary" onClick={() => handleGetForecasts(selectedOptions)}>
             Get forecasts
           </EuiButton>
         </EuiFlexItem>
