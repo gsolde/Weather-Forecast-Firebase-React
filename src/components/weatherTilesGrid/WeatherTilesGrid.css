@@ -1,0 +1,8 @@
+.noFavoriteCitiesMsg {
+  text-align: center;
+  color: white;
+  font-size: 80px;
+  position: relative;
+  top: 200px;
+  opacity: 0.1;
+}

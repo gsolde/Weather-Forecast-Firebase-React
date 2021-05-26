@@ -36,7 +36,7 @@ export const loginSignupSlice = createSlice({
       })
       .addCase(fetchUserFavoriteCities.fulfilled, (state, action) => {
         state.status = "success";
-        state.userFavoriteCities = action.payload;
+        state.userFavoriteCities = action.payload ? action.payload : [];
       })
       .addCase(fetchUserFavoriteCities.rejected, (state) => {
         state.status = "failed";
