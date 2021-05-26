@@ -20,7 +20,7 @@
     "react-scripts": "4.0.3"
   },
   "scripts": {
-    "heroku-prebuild": "yarn install -g serve",
+    "heroku-prebuild": "yarn global add serve",
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
