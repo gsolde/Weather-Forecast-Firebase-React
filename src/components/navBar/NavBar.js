@@ -8,15 +8,18 @@ import {
   selectUserFavoriteCities,
   fetchUserFavoriteCities,
 } from "../loginSignup/loginSignupSlice";
+import { selectFavoriteCitiesSelected } from "../navBar/navBarSlice";
 import { resetWeatherReports, fetchWeatherReports } from "../searchBar/searchBarSlice";
 import { setFavoriteCitiesSelected } from "../navBar/navBarSlice";
 import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 
 function NavBar() {
+  const dispatch = useDispatch();
+
   const history = useHistory();
   const user = useSelector(selectUser);
+  const isFavoriteCitiesSelected = useSelector(selectFavoriteCitiesSelected);
   const userFavoriteCities = Object.values(useSelector(selectUserFavoriteCities));
-  const dispatch = useDispatch();
 
   function handleSelectFavorites(cities, user) {
     dispatch(resetWeatherReports());
@@ -42,12 +45,16 @@ function NavBar() {
       {user ? (
         <>
           <EuiFlexItem grow={false}>
-            <EuiButton color="primary" onClick={() => handleSelectFavorites(userFavoriteCities, user)}>
+            <EuiButton
+              color="primary"
+              disabled={isFavoriteCitiesSelected ? true : false}
+              onClick={() => handleSelectFavorites(userFavoriteCities, user)}
+            >
               My favorite Cities
             </EuiButton>
           </EuiFlexItem>
           <EuiFlexItem grow={false}>
-            <EuiButton color="text" onClick={handleSearchCities}>
+            <EuiButton color="primary" disabled={isFavoriteCitiesSelected ? false : true} onClick={handleSearchCities}>
               Search Cities
             </EuiButton>
           </EuiFlexItem>
