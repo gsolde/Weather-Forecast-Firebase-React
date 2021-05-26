@@ -39,26 +39,30 @@ function WeatherTile(props) {
   return (
     <EuiFlexItem key={props.index}>
       <EuiCard
-        textAlign="left"
+        textAlign="center"
         title={props.report.municipio.NOMBRE}
-        description={
-          <>
-            {Number(props.report.lluvia) === 0 ? <img className="weatherIcon" src={sun} /> : null}
+        image={
+          <div>
+            {Number(props.report.lluvia) === 0 ? <img className="weatherIcon" src={sun} alt="sun" /> : null}
 
-            {props.report.lluvia === "Ip" ? <img className="weatherIcon" src={cloud} /> : null}
+            {props.report.lluvia === "Ip" ? <img className="weatherIcon" src={cloud} alt="cloud" /> : null}
 
             {Number(props.report.lluvia) >= 0.1 && Number(props.report.lluvia) <= 0.2 ? (
-              <img className="weatherIcon" src={cloud} />
+              <img className="weatherIcon" src={cloud} alt="cloud" />
             ) : null}
 
             {Number(props.report.lluvia) >= 1 && Number(props.report.lluvia) < 2 ? (
-              <img className="weatherIcon" src={rainCloud} />
+              <img className="weatherIcon" src={rainCloud} alt="rainCloud" />
             ) : null}
 
-            {Number(props.report.lluvia) >= 2 ? <img className="weatherIcon" src={rain} /> : null}
-
-            <div>Temperature: {`${props.report.temperatura_actual} ºC`}</div>
-            <div>Rain probability: {`${props.report.lluvia} mm`}</div>
+            {Number(props.report.lluvia) >= 2 ? <img className="weatherIcon" src={rain} alt="rain" /> : null}
+          </div>
+        }
+        description={
+          <>
+            <span className="weatherInfo">Temperature: {`${props.report.temperatura_actual} ºC`}</span>
+            <br></br>
+            <span className="weatherInfo">Rain probability: {`${props.report.lluvia} mm`}</span>
           </>
         }
         footer={
@@ -78,6 +82,8 @@ function WeatherTile(props) {
                   ? "Delete from favorites"
                   : isFavorite
                   ? "Stored in favorites"
+                  : !user
+                  ? "Login to add to favorites"
                   : "Add to favorites"}
               </EuiButton>
             </EuiFlexItem>
