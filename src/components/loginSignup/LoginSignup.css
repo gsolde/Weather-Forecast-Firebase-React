@@ -18,3 +18,10 @@
 .hasAccountSetter:hover {
   cursor: pointer;
 }
+
+.errorMsg {
+  color: #e74c3c;
+  width: 300px;
+  margin-top: 50px;
+  text-align: center;
+}
