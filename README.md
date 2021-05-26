@@ -10,11 +10,11 @@ Create-react-app comes in handy as well to develop small & medium-sized projects
 
 ## - Comments - ##
 
-I could not add any icon or graph to the app because I have been quite busy lately and I did not have the time.
+I could not add any graph to the app because I have been quite busy lately and I did not have the time.
 I kept the UI as simple as possible and there are lots of extra features that can be added. 
 The app is not responsive and there is no testing.
 
-## - Run the app -
+## - To run the app -
  
 **1. Fork or clone the repo.**<br/>
 **2. Install dependencies.**
@@ -24,6 +24,10 @@ The app is not responsive and there is no testing.
 **3. You're ready to go!**
 
   Run ```npm run dev``` in the project directory to start the app in development mode.<br />
+  
+## - Deployed app -
+
+Have a look at the project at https://iomed-coding-challenge.herokuapp.com/
 
 ## - Extra words -
 
