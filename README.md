@@ -2,7 +2,7 @@
 
 This is a simple app that allows you to find and store the weather forecast at any Spanish city using the eltiempo.es API, and Firebase to manage users and data storage.
 
-## - To run the app -,
+## - To run the app -
  
 **1. Fork or clone the repo.**<br/>
 **2. Install dependencies.**
